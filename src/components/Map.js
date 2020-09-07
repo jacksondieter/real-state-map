@@ -1,7 +1,15 @@
 import React from 'react'
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { useStateValue } from '../State';
 
 export default function MapComponent() {
+    const [{ geoData }] = useStateValue();
+
+    const buildings = geoData.map((point) => (
+        {   coordinates:point.geometry.coordinates,
+            type:point.properties.buildingType
+        }
+        ))
     const accessToken = process.env.REACT_APP_API_KEY
     const mapData = {
         coordinates:[47.3836514,8.5482374],
@@ -12,16 +20,18 @@ export default function MapComponent() {
     }
 
     return (
-        <Map center={mapData.coordinates} zoom={mapData.zoom} style={{width:'50%', marginLeft:'50%'}}>
+        <Map center={mapData.coordinates} zoom={mapData.zoom}>
             <TileLayer
                 url={mapData.mapUrl}
                 attribution={mapData.mapAtr}
             />
-            <Marker position={mapData.coordinates}>
-                <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
+            {buildings.map(point =>(
+                <Marker position={point.coordinates} id={point.coordinates[0]} style={point.style}>
+                    <Popup>
+                        {point.type}
+                    </Popup>
+                </Marker>
+            ))}
         </Map>
     )
 }

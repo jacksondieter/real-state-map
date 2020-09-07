@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {CSVReader} from 'react-papaparse'
 import { useStateValue } from '../State';
 import {_getGeoJsonArray,config} from '../utils/handler'
