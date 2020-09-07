@@ -4,7 +4,7 @@ import MapComponent from './components/Map';
 import Sidebar from './components/Sidebar'
 
 
-function App() {
+const App = () => {
   const initialState = {
     geoData: []
   };

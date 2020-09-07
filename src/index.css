@@ -18,9 +18,49 @@ code {
 
 .leaflet-container {
   height: 100vh;
-  width: 50%;
+  width: 50vw;
+  position: fixed;
+  right: 0;
 }
 .sidebar-container {
   height: 100vh;
-  width: 50%;
+  width: 50vw;
+}
+
+.bar-container {
+  position: fixed;
+  width: 49vw;
+  margin:auto;
+  background-color: silver;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1000;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+}
+
+.card-container {
+  height:calc(100% - 50px);
+  top: 54px;
+  position: relative;
+  width: 49vw;
+}
+
+.residential {
+  color: "#ff0000";
+}
+.offices {
+  color: "#0000ff";
+}
+.oommercial {
+  color: "#00ff00";
+}
+.industrial {
+  color: "#ff00ff";
+}
+.mixed {
+  color: "#00ffff";
 }
