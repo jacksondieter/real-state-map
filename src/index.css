@@ -7,10 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 .page-container {
   display: flex;
   width: 100vw;
@@ -40,27 +36,13 @@ code {
 .filter-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 30vw;
 }
 
 .card-container {
   height:calc(100% - 50px);
-  top: 54px;
+  top: 65px;
   position: relative;
   width: 49vw;
-}
-
-.residential {
-  color: "#ff0000";
-}
-.offices {
-  color: "#0000ff";
-}
-.oommercial {
-  color: "#00ff00";
-}
-.industrial {
-  color: "#ff00ff";
-}
-.mixed {
-  color: "#00ffff";
 }

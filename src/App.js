@@ -6,7 +6,9 @@ import Sidebar from './components/Sidebar'
 
 const App = () => {
   const initialState = {
-    geoData: []
+    geoData: [],
+    filters:{},
+    geoDataFiltered:[]
   };
   const reducer = (state, action) => {
     switch (action.type) {

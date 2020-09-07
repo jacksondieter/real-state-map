@@ -3,7 +3,7 @@ import {CSVReader} from 'react-papaparse'
 import { useStateValue } from '../State';
 import {_getGeoJsonArray,config} from '../utils/handler'
 import BuildingCard from './BuildingCard'
-import FilterContainer from './FilterContainer'
+import FilterComponent from './FilterComponent'
 
 
 const Sidebar = () => {
@@ -32,7 +32,7 @@ const Sidebar = () => {
     return (
         <div className={'sidebar-container'}>
             <div className={'bar-container'}>
-                <FilterContainer />
+                <FilterComponent />
                 <CSVReader
                     onDrop={handleOnDrop}
                     noDrag
