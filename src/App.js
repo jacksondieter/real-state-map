@@ -2,25 +2,32 @@ import React from 'react';
 import { StateProvider } from './State';
 import MapComponent from './components/Map';
 import Sidebar from './components/Sidebar'
+import {LOAD_DATA,CLEAN_DATA,UPDATE_DATA} from './actions'
 
 
 const App = () => {
   const initialState = {
     geoData: [],
-    filters:{},
     geoDataFiltered:[]
   };
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'loadData':
+      case LOAD_DATA:
         return {
           ...state,
-          geoData: action.newGeoData
+          geoData: action.newGeoData,
+          geoDataFiltered: action.newGeoData
         };
-      case 'cleanData':
+      case CLEAN_DATA:
         return {
           ...state,
-          geoData: []
+          geoData: [],
+          geoDataFiltered:[]
+        };
+      case UPDATE_DATA:
+        return {
+          ...state,
+          geoDataFiltered: action.newGeoData
         };
       default:
         return state;

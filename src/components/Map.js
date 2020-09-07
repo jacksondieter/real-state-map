@@ -4,7 +4,7 @@ import mapData from '../utils/props'
 import { useStateValue } from '../State';
 
 const MapComponent = () => {
-    const [{ geoData }] = useStateValue();
+    const [{ geoDataFiltered }] = useStateValue();
 
     return (
         <Map center={mapData.coordinates} zoom={mapData.zoom}>
@@ -12,8 +12,8 @@ const MapComponent = () => {
                 url={mapData.mapUrl}
                 attribution={mapData.mapAtr}
             />
-            {geoData.map(point =>(
-                <Marker position={point.geometry.coordinates} id={point.geometry.coordinates[0]}>
+            {geoDataFiltered.map(point =>(
+                <Marker position={point.geometry.coordinates} key={point.id}>
                     <Popup>
                         {point.properties.buildingType} <br /> <span>Price: {point.properties.price} </span> 
                     </Popup>

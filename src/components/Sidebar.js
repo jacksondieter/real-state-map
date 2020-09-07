@@ -1,22 +1,20 @@
 import React from 'react'
 import {CSVReader} from 'react-papaparse'
 import { useStateValue } from '../State';
+import {loadFilteredData,cleanInitialData,loadInitialData} from '../actions'
 import {_getGeoJsonArray,config} from '../utils/handler'
 import BuildingCard from './BuildingCard'
 import FilterComponent from './FilterComponent'
 
 
 const Sidebar = () => {
-    const [{ geoData }, dispatch] = useStateValue();
+    const [{ geoDataFiltered }, dispatch] = useStateValue();
 
     const handleOnDrop = (data) => {
         const jsonArray = data.map(x => x.data)
         const geoJsonArray = _getGeoJsonArray(jsonArray)
         console.log(geoJsonArray)
-        dispatch({
-            type:'loadData',
-            newGeoData:geoJsonArray
-        })
+        dispatch(loadInitialData(geoJsonArray))
     }
 
     const handleOnError = (err, file, inputElem, reason) => {
@@ -24,9 +22,7 @@ const Sidebar = () => {
     }
 
     const handleOnRemoveFile = (data) => {
-        dispatch({
-            type:'cleanData'
-        })
+        dispatch(cleanInitialData())
     }
 
     return (
@@ -72,8 +68,8 @@ const Sidebar = () => {
                 </CSVReader>
             </div>
             <div className={'card-container'}>
-                {geoData.map((building) =>(
-                    <BuildingCard building={building.properties} id={building.geometry.coordinates[0]}/>
+                {geoDataFiltered.map((building) =>(
+                    <BuildingCard building={building.properties} key={building.id}/>
                 ))}
             </div>
         </div>
