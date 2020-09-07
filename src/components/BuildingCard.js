@@ -6,6 +6,7 @@ const BuildingCard = ({building}) => {
         <div style={{display:'flex', justifyContent:"space-between", border:'1px dotted silver'}}>
             <div>Type: {buildingType}</div>
             <div> Price: {price}</div>
+            <div>Parking: {parking?'Yes':'No'}</div>
         </div>
     )
 }

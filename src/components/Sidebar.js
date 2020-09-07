@@ -1,7 +1,7 @@
 import React from 'react'
 import {CSVReader} from 'react-papaparse'
 import { useStateValue } from '../State';
-import {loadFilteredData,cleanInitialData,loadInitialData} from '../actions'
+import {cleanInitialData,loadInitialData} from '../actions'
 import {_getGeoJsonArray,config} from '../utils/handler'
 import BuildingCard from './BuildingCard'
 import FilterComponent from './FilterComponent'
@@ -13,7 +13,6 @@ const Sidebar = () => {
     const handleOnDrop = (data) => {
         const jsonArray = data.map(x => x.data)
         const geoJsonArray = _getGeoJsonArray(jsonArray)
-        console.log(geoJsonArray)
         dispatch(loadInitialData(geoJsonArray))
     }
 
